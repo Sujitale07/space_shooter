@@ -1,0 +1,597 @@
+
+body {
+    background-color: #000;
+    max-height: 100vh;
+    overflow-x: hidden;
+    webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+    overflow-y: hidden;
+    font-family: "Tiny5", sans-serif;
+}
+
+@font-face {
+    font-family: "primary font";
+    src: url(../fonts/Sk.ttf);
+}
+
+.loading-overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+}
+
+.progress-bar {
+    width: 80%;
+    max-width: 300px;
+    height: 8px;
+    background-color: #3b3b3b;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    width: 0;
+    height: 100%;
+    background-color: #4f46e5; /* Change color as needed */
+    transition: width 0.2s ease;
+}
+
+#progress-text {
+    color: #ffffff;
+    margin-top: 10px;
+}
+
+
+.line{
+    height: 100vh;
+    width: 5px;
+    background: red;
+    position: fixed;
+    z-index: 213213213213213;
+    top: 0;
+}
+
+.opacity-0{
+    opacity: 0;
+    
+}
+
+.opacity-1{
+    opacity: 1;
+}
+
+
+.space-ship{
+    width: 100px;
+    position: absolute;
+    transition: 0.08s all cubic-bezier(0.19, 1, 0.22, 1);
+    bottom: 55%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.space-ship img.craft{
+    width: 100%;
+}
+
+.bulletsFired{
+    font-family: "Tiny5", sans-serif;
+    color: rgb(131, 255, 133);
+    position: absolute;
+    transition: all 0.2s ease-in-out;
+    top: -10px;
+    left: 10px;
+}
+
+.score{
+    transition: all 0.2s ease-in-out;
+    font-family: "Tiny5", sans-serif;
+    color: rgb(234, 58, 58);
+    position: absolute;
+    top: -10px;
+    right: 10px;
+}
+
+.beam{
+    width: 10px;
+    top: 0%;
+    transition: 0.0001s all ease-in-out;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+.fireBeam{
+    position: relative;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: rgb(254 202 202);
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    bottom: 20%;
+}
+
+.menu button{
+    font-family: "primary font";
+    color: orangered;
+    border: none;    
+    font-size: 1.5rem;
+    line-height: 2rem;    
+    outline: 0;
+    line-height: 3;
+    background: #000;
+}
+
+.health{
+    width: 50%;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 10px;
+    border: 2px dashed white;
+}
+
+.percentage{
+    height: 100%;
+    
+    background: green;
+}
+.level_wrapper {
+    width: 100%; /* Set width to 76% of the viewport width */
+    height: 43%; /* Set height to 48% of the viewport width */
+    max-width: 760px; /* Set max-width to 760px to avoid scaling too large */
+    max-height: 480px; /* Set max-height to 480px for the same reason */
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: villainComing 1s linear;
+}
+
+
+@keyframes villainComing {
+    0% {
+        top: -100%;
+        width: 500%;
+    }
+    
+    100% {
+        width: 100%;
+    }
+}
+
+.level_one_villain {
+    position: absolute;
+    width: 50px;
+    height: 30px;
+}
+
+/* Animation Keyframes */
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.5);
+        display: block;
+        display: contents;
+    }
+    60% {
+        transform: scale(1.1);
+        display: none;
+    }
+    100% {        
+        display: block;
+        transform: scale(1);
+    }
+}
+
+/* Base Styles for Villains */
+.level_one_villain {
+    position: absolute;
+    width: 50px;
+    height: 30px;
+    animation: bounceIn 0.5s ease-out infinite;
+}
+
+@keyframes moveAcross {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(100vw - 50px)); /* 50px is the width of the alien */
+    }
+}
+
+
+/* Adding Delay for Each Row */
+#one.level_one_villain, #two.level_one_villain, #three.level_one_villain, #four.level_one_villain, #five.level_one_villain {
+    animation-delay: 0.2s;
+}
+
+#six.level_one_villain, #seven.level_one_villain, #eight.level_one_villain, #nine.level_one_villain, #ten.level_one_villain {
+    animation-delay: 0.4s;
+}
+
+#eleven.level_one_villain, #twelve.level_one_villain, #thirteen.level_one_villain, #fourteen.level_one_villain, #fifteen.level_one_villain {
+    animation-delay: 0.6s;
+}
+
+#sixteen.level_one_villain, #seventeen.level_one_villain, #eighteen.level_one_villain, #nineteen.level_one_villain, #twenty.level_one_villain {
+    animation-delay: 0.8s;
+}
+
+#twenty-one.level_one_villain, #twenty-two.level_one_villain, #twenty-three.level_one_villain, #twenty-four.level_one_villain, #twenty-five.level_one_villain {
+    animation-delay: 1s;
+}
+
+/* Row Positions */
+#one.level_one_villain { top: 4%; left: 4%; }
+#two.level_one_villain { top: 4%; left: 24%; }
+#three.level_one_villain { top: 4%; left: 48%; }
+#four.level_one_villain { top: 4%; left: 70%; }
+#five.level_one_villain { top: 4%; left: 90%; }
+
+/* Row 2 */
+#six.level_one_villain { top: 24%; left: 4%; }
+#seven.level_one_villain { top: 24%; left: 24%; }
+#eight.level_one_villain { top: 24%; left: 48%; }
+#nine.level_one_villain { top: 24%; left: 70%; }
+#ten.level_one_villain { top: 24%; left: 90%; }
+
+/* Row 3 */
+#eleven.level_one_villain { top: 44%; left: 4%; }
+#twelve.level_one_villain { top: 44%; left: 24%; }
+#thirteen.level_one_villain { top: 44%; left: 48%; }
+#fourteen.level_one_villain { top: 44%; left: 70%; }
+#fifteen.level_one_villain { top: 44%; left: 90%; }
+
+/* Row 4 */
+#sixteen.level_one_villain { top: 64%; left: 4%; }
+#seventeen.level_one_villain { top: 64%; left: 24%; }
+#eighteen.level_one_villain { top: 64%; left: 48%; }
+#nineteen.level_one_villain { top: 64%; left: 70%; }
+#twenty.level_one_villain { top: 64%; left: 90%; }
+
+/* Row 5 */
+#twenty-one.level_one_villain { top: 84%; left: 4%; }
+#twenty-two.level_one_villain { top: 84%; left: 24%; }
+#twenty-three.level_one_villain { top: 84%; left: 48%; }
+#twenty-four.level_one_villain { top: 84%; left: 70%; }
+#twenty-five.level_one_villain { top: 84%; left: 90%; }
+
+
+/* For Level Two */
+       
+@keyframes pulsate {
+    0%, 100% {
+        transform: scale(1); /* Original size */
+    }
+    50% {
+        transform: scale(1.2); /* Scale up */
+    }
+}
+
+/* For Level Two */
+.level_two_villain {
+    position: absolute;
+    width: 50px;    
+    height: 60px;
+}
+
+/* Star Pattern Positions */
+#one.level_two_villain {
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the first villain */
+}
+
+#two.level_two_villain {
+    top: 30%;
+    left: 30%;
+}
+
+#three.level_two_villain {
+    top: 30%;
+    left: 70%;
+}
+
+#four.level_two_villain {
+    top: 50%;
+    left: 10%;
+}
+
+#five.level_two_villain {
+    top: 50%;
+    left: 90%;
+}
+
+#six.level_two_villain {
+    top: 70%;
+    left: 30%;
+}
+
+#seven.level_two_villain {
+    top: 70%;
+    left: 70%;
+}
+
+#eight.level_two_villain {
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the villain at the bottom */
+}
+
+.level_two_villain {
+    animation: pulsate 1s infinite; /* Pulsate animation */
+}
+
+/* Additional animations for movement */
+@keyframes moveDown {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+    100% { transform: translateY(0); }
+}
+
+/* Apply movement animation to certain villains */
+#one.level_two_villain, #eight.level_two_villain {
+    animation: moveDown 1.5s infinite; /* Specific villains moving */
+}
+
+/* For Level Three */
+.level_three_villain {
+    position: absolute;
+    width: 50px;    
+    height: 40px;
+}
+
+/* Zigzag Pattern Positions */
+#one.level_three_villain {
+    top: 10%;
+    left: 10%;
+}
+
+#two.level_three_villain {
+    top: 20%;
+    left: 30%;
+}
+
+#three.level_three_villain {
+    top: 30%;
+    left: 50%;
+}
+
+#four.level_three_villain {
+    top: 40%;
+    left: 70%;
+}
+
+#five.level_three_villain {
+    top: 50%;
+    left: 90%;
+}
+
+/* More villains to complete the zigzag */
+#six.level_three_villain {
+    top: 40%;
+    left: 10%;
+}
+
+#seven.level_three_villain {
+    top: 50%;
+    left: 30%;
+}
+
+#eight.level_three_villain {
+    top: 60%;
+    left: 50%;
+}
+
+#nine.level_three_villain {
+    top: 70%;
+    left: 70%;
+}
+
+#ten.level_three_villain {
+    top: 80%;
+    left: 90%;
+}
+
+@keyframes zigzag {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-50px); } /* Move left */
+    50% { transform: translateX(50px); }  /* Move right */
+    75% { transform: translateX(-10px); } /* Move left */
+    100% { transform: translateX(0); }     /* Back to original */
+}
+
+/* Apply the zigzag animation */
+.level_three_villain {
+    animation: zigzag 1s infinite; /* Continuous zigzag movement */
+}
+
+
+.level_four_villain {
+    position: absolute;
+    width: 50px;    
+    height: 45px;
+   
+    border-radius: 50%; /* Making it look like an alien */
+}
+
+/* Initial positions for spiral */
+#one.level_four_villain {    
+    top: 10%;
+    left: 50%;
+    animation: spiral 3s infinite alternate;
+}
+
+#two.level_four_villain {
+    top: 20%;
+    left: 30%;
+    animation: spiral 3s infinite alternate;
+}
+
+#three.level_four_villain {
+    top: 20%;
+    left: 70%;
+    animation: spiral 3s infinite alternate;
+}
+
+#four.level_four_villain {
+    top: 30%;
+    left: 40%;
+    animation: spiral 3s infinite alternate;
+}
+
+#five.level_four_villain {
+    top: 30%;
+    left: 60%;
+    animation: spiral 3s infinite alternate;
+}
+
+/* Add more villains to enhance the challenge */
+#six.level_four_villain {
+    top: 40%;
+    left: 10%;
+    animation: spiral 3s infinite alternate;
+}
+
+#seven.level_four_villain {
+    top: 40%;
+    left: 90%;
+    animation: spiral 3s infinite alternate;
+}
+
+#eight.level_four_villain {
+    top: 50%;
+    left: 50%;
+    animation: spiral 2s infinite alternate;
+}
+
+@keyframes spiral {
+    0% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(-80px, 50px); /* Move outward */
+    }
+    100% {
+        transform: translate(80px, 10px); /* Move back */
+    }
+}
+
+/* Adjust the animation speed and timing as needed */
+.level_four_villain {
+    animation-duration: 3s; /* Adjust to make it faster or slower */
+    animation-timing-function: linear; /* Keeps a consistent speed */
+}
+
+/* For Level Five */
+.level_five_villain {
+    position: absolute;
+    width: 100px;    
+    height: 60px;
+   
+    border-radius: 50%; /* Making it look like an alien */
+}
+
+/* Initial positions for zigzag movement */
+#one.level_five_villain {    
+    top: 10%;
+    left: 10%;
+    animation: levelFiveZigzag 2s infinite alternate;
+}
+
+#two.level_five_villain {
+    top: 10%;
+    left: 25%;
+    animation: levelFiveZigzag 2s infinite alternate;
+}
+
+#three.level_five_villain {
+    top: 10%;
+    left: 40%;
+    animation: levelFiveZigzag 2s infinite alternate;
+}
+
+#four.level_five_villain {
+    top: 10%;
+    left: 55%;
+    animation: levelFiveZigzag 2s infinite alternate;
+}
+
+#five.level_five_villain {
+    top: 10%;
+    left: 70%;
+    animation: levelFiveZigzag 2s infinite alternate;
+}
+
+#six.level_five_villain {
+    top: 30%;
+    left: 10%;
+    animation: levelFiveZigzag 2s infinite alternate;
+}
+
+#seven.level_five_villain {
+    top: 30%;
+    left: 25%;
+    animation: levelFiveZigzag 2s infinite alternate;
+}
+
+#eight.level_five_villain {
+    top: 30%;
+    left: 40%;
+    animation: levelFiveZigzag 2s infinite alternate;
+}
+
+/* Zigzag Animation for Level Five */
+@keyframes levelFiveZigzag {
+    0% {
+        transform: translate(0, 0);
+    }
+    25% {
+        transform: translate(20px, 0); /* Move right */
+    }
+    50% {
+        transform: translate(0, 20px); /* Move down */
+    }
+    75% {
+        transform: translate(-20px, 0); /* Move left */
+    }
+    100% {
+        transform: translate(0, 0); /* Return to starting point */
+    }
+}
+
+/* Shooting Mechanic (just for reference, no JS included) */
+.projectile {
+    position: absolute;
+    width: 5px;
+    height: 15px;
+   
+    animation: levelFiveProjectileMove 1s linear forwards;
+}
+
+@keyframes levelFiveProjectileMove {
+    0% {
+        bottom: 10%; /* Start position */
+    }
+    100% {
+        bottom: 100%; /* Move upwards */
+    }
+}

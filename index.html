@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alien Shooter - Save Earth</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tiny5&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/Space.css">
+    <link rel="stylesheet" href="css/Game.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="loading-overlay fixed inset-0 flex items-center justify-center bg-black z-[999999999999999] ">
+        <div class="text-center">
+            <div class="progress-bar bg-gray-700 rounded-full w-64 h-4 overflow-hidden mb-4">
+                <div class="progress-fill bg-blue-500 h-full transition-all duration-300"></div>
+            </div>
+            <p class="text-white text-lg" id="progress-text">Loading... 0%</p>
+        </div>
+    </div>
+    <main>        
+
+        <div id="popup" class="h-screen fixed z-[999999999999999] flex items-center justify-center controls w-full top-0 left-0 hidden">
+            <div class="w-[80%] h-[80%] bg-gray-800 rounded p-8 relative flex flex-col justify-between items-center text-white">
+                <!-- Close Button -->
+                <button id="close-btn" class="absolute top-4 right-4 text-gray-300 hover:text-gray-100 font-bold text-lg">✕</button>
+        
+                <!-- Control title -->
+                <h2 class="text-2xl font-bold mb-4">Game Controls</h2>
+        
+                <!-- WASD controls -->
+                <div class="flex flex-col items-center mb-4">
+                    <div class="mb-2">
+                        <span class="text-lg p-2 bg-gray-600 rounded">W</span>
+                    </div>
+                    <div class="flex space-x-4">
+                        <span class="text-lg p-2 bg-gray-600 rounded">A</span>
+                        <span class="text-lg p-2 bg-gray-600 rounded">S</span>
+                        <span class="text-lg p-2 bg-gray-600 rounded">D</span>
+                    </div>
+                    <p class="mt-2 text-sm">Use W, A, S, D to move</p>
+                </div>
+        
+                <!-- Arrow keys controls -->
+                <div class="flex flex-col items-center mb-4">
+                    <div class="flex items-center space-x-4">
+                        <span class="text-lg p-2 bg-gray-600 rounded">←</span>
+                        <span class="text-lg p-2 bg-gray-600 rounded">↓</span>
+                        <span class="text-lg p-2 bg-gray-600 rounded">→</span>
+                    </div>
+                    <div class="mt-2">
+                        <span class="text-lg p-2 bg-gray-600 rounded">↑</span>
+                    </div>
+                    <p class="mt-2 text-sm">Use Arrow keys to navigate</p>
+                </div>
+        
+                <!-- Space control -->
+                <div class="flex flex-col items-center">
+                    <span class="text-lg p-3 bg-gray-600 rounded">Space</span>
+                    <p class="mt-2 text-sm">Press Space to shoot</p>
+                </div>
+            </div>
+        </div>
+        
+    
+        <div class="game right_side p-4">
+            <div class="bg-white rounded px-4 py-10">
+                <h4 class="text-xl" id="quote"></h4>
+            </div>             
+        </div>
+        <div class="game left_side p-4">
+            <div class="bg-white p-2 px-4 rounded">
+                <h2 class="text-xl">Level : <span class="level"></span></h2>
+                <h2 class="text-xl">Total Bullets Allocated : <span class="bullets_allocated"></span></h2>
+            </div>      
+            <div class="bg-white mt-3 p-2 px-4 rounded">
+                <p class="text-xl">You've to clear all the aliens within the allocated bullets</p>
+            </div>
+        </div>
+    
+    
+        <div class="game playground">
+            <div class="galaxy"></div>
+    
+            
+            <div id="space-ship"  class="space-ship">
+    
+                <img src="assets/spaceship-1.png" class="craft" draggable="false"  alt="">
+    
+    
+               
+                    <img src="assets/beam.png" class="beam" alt="">
+               
+            </div>
+        
+    
+            <div class="menu">            
+                <button id="start">Start</button>
+                <button id="show-btn">Show Controls</button>
+                <button>Contribute to This Game</button>            
+            </div>
+    
+    
+            <p class="fadeInAnimAfterGameStart bulletsFired opacity-0">Numbers of Bullets Fired : <span class="numbers_of_bullets_s">0</span></p>
+            <p class="fadeInAnimAfterGameStart score opacity-0">Score : <span class="scoreNumber">0</span></p>
+            <div class="fadeInAnimAfterGameStart health opacity-0">
+                <div class="percentage lifePercentage" ></div>
+            </div>
+    
+        </div>
+
+    </main>    
+
+
+    <script  src="js/Game.js"></script>
+</body>
+</html>
