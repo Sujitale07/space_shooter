@@ -36,6 +36,54 @@ try {
     overlay.appendChild(alertBox);
     document.body.appendChild(overlay);
 
+    let assets = {
+        images: {
+            levelOneVillain: './assets/level_one/villain.png',
+            levelTwoVillain: './assets/level_two/villain.png',
+            levelThreeVillain: './assets/level_three/villain.png',
+            levelFourVillain: './assets/level_four/villain.png',
+            levelFiveVillain: './assets/level_five/villain.png'
+        },
+        sounds: [
+            './sound-effects/start.mp3',
+            './sound-effects/firing.mp3',
+            './sound-effects/game_over.mp3',
+            './sound-effects/explosion.mp3',
+            './sound-effects/level_one.mp3',
+            './sound-effects/level_two.mp3',
+            './sound-effects/level_three.mp3',
+            './sound-effects/level_four.mp3',
+            './sound-effects/level_five.mp3'
+        ]
+    };
+    
+    function preloadAssets(assets, callback) {
+        let loadedAssets = 0;
+        const totalAssets = Object.keys(assets.images).length + assets.sounds.length;
+    
+        // Preload Images
+        for (let key in assets.images) {
+            const img = new Image();
+            img.src = assets.images[key];
+            img.onload = img.onerror = () => {
+                loadedAssets++;
+                if (loadedAssets === totalAssets) callback();
+            };
+        }
+    
+        // Preload Sounds
+        assets.sounds.forEach(src => {
+            const audio = new Audio(src);
+            audio.oncanplaythrough = audio.onerror = () => {
+                loadedAssets++;
+                if (loadedAssets === totalAssets) callback();
+            };
+        });
+    }
+
+    preloadAssets(assets, function (){console.log('all assets loaded')})
+
+
     // Close alert functionality
     document.getElementById('close-alert').addEventListener('click', () => {
         overlay.remove();
